@@ -2,7 +2,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { CalendarDays } from "lucide-react";
 import { HotelStatic } from "@/features/components/HotelPerformance";
-
+import { Circle } from "lucide-react";
 const Occupancystatistics = dynamic(
   () => import("@/features/dashboard/Barchart")
 );
@@ -48,16 +48,27 @@ const Statics = [
 ];
 function page() {
   return (
-    <main className="flex flex-col gap-4 w-full max-w-254 mr-12">
-      <div>
-        {" "}
+    <main className="flex flex-col gap-12 w-full max-w-254 mr-12">
+      <div className=" flex flex-col gap-4">
+        <h1 className="flex items-center gap-2">
+          <Circle
+            className="stroke-secondary bg-secondary rounded-full"
+            size={15}
+          />{" "}
+          نمای کلی
+        </h1>
         <UserStatics items={Statics} />
       </div>
+      <div className="flex flex-row gap-18 align-middle items-center">
+        {" "}
+        <LinearChartMonthly />
+        <LineaChartYearly />
+      </div>
+      <div className="flex flex-row gap-18 align-middle items-center">
+        <HotelPerformance information={items} />
+        <OccupancyGauge />
+      </div>
       <Occupancystatistics />
-      <OccupancyGauge />
-      <HotelPerformance information={items} />
-      <LinearChartMonthly />
-      <LineaChartYearly />
     </main>
   );
 }

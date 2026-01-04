@@ -1,0 +1,67 @@
+import React from "react";
+import CustomSearchInput from "@/features/components/SearchInput";
+import ReservationInfoTable from "@/features/Tables/ReservationTable";
+import UserStatics from "@/features/dashboard/userStatics";
+import ListPagination from "@/features/components/Listpagination";
+import CustomFilterByUser from "@/features/components/filterbyuser";
+import { Circle } from "lucide-react";
+import { Users } from "lucide-react";
+import { SquareActivity } from "lucide-react";
+import { UserPlus, Plus } from "lucide-react";
+import Button from "@/features/components/Button";
+import Link from "next/link";
+const item = ["جستجو بر اساس نام یا شماره اتاق"];
+const filterItems = [
+  { id: 1, name: "کاربران فعال" },
+  { id: 2, name: "کاربران غیرفعال" },
+];
+const Statics = [
+  {
+    id: 1,
+    name: "مجموع کاربران ثبت‌نام‌شده",
+    icon: <Users />,
+    number: 12450,
+  },
+  {
+    id: 2,
+    name: "کاربران فعال در ۳۰ روز اخیر",
+    icon: <SquareActivity />,
+    number: 4320,
+  },
+  { id: 3, name: "کاربران جدید این ماه", icon: <UserPlus />, number: 230 },
+];
+function page() {
+  return (
+    <main className="flex flex-col gap-4 w-full max-w-254 mr-12">
+      <UserStatics items={Statics} />
+      <h1 className="flex items-center gap-2">
+        <Circle
+          className="stroke-secondary bg-secondary rounded-full"
+          size={15}
+        />
+        لیست رزروها
+      </h1>
+      <div className=" flex shrink-0 justify-between">
+        <CustomSearchInput items={item} />
+        <div className="flex items-center gap-4">
+          <CustomFilterByUser items={filterItems} />
+          <Link href="Admin/rooms/addRoom">
+            <Button
+              color="blue2"
+              radius="none"
+              size="small"
+              className="text-white text-md p-2"
+            >
+              <Plus />
+              افزودن اتاق جدید
+            </Button>
+          </Link>
+        </div>
+      </div>
+      <ReservationInfoTable showButton={false} />
+      <ListPagination />
+    </main>
+  );
+}
+
+export default page;
