@@ -34,6 +34,7 @@ export default function BasicModal({ open, onClose }: BasicModalProps) {
                 width={96}
                 height={96}
                 className="w-24 h-24"
+                fetchPriority="high"
               />
               <span className="text-textPrimary text-[18px]">ورود/ثبت نام</span>
             </div>

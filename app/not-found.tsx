@@ -1,13 +1,13 @@
-import Image from "next/image";
 import Button from "@/features/components/Button";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 function Notfound() {
   return (
     <div className="bg-[#E6F4F7] flex flex-col items-center justify-center gap-20 p-4 md:p-20 min-h-screen">
       <h1 className="text-3xl mb-6 text-center">اوه، مشکلی پیش اومده!</h1>
 
-      <div className="relative h-auto min-h-119.5 w-full max-w-257.25 mx-auto">
+      {/* <div className="relative h-auto min-h-119.5 w-full max-w-257.25 mx-auto">
         <Image
           src="/404.png"
           alt="404 Error Illustration"
@@ -23,16 +23,20 @@ function Notfound() {
           height={465}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 object-contain"
         />
-      </div>
+      </div> */}
 
-      <Button
-        radius="md"
-        size="medium"
-        className="w-54 text-white mt-10 flex items-center gap-2"
-      >
-        <ArrowLeft className="rotate-180" />
-        صفحه قبل
-      </Button>
+      <Link href="/Admin">
+        {" "}
+        <Button
+          radius="md"
+          size="medium"
+          className="w-54 text-white mt-10 flex items-center gap-2"
+        >
+          {" "}
+          صفحه قبل
+          <ArrowLeft className="rotate-180" />
+        </Button>
+      </Link>
     </div>
   );
 }

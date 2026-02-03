@@ -45,7 +45,7 @@ function page() {
         <CustomSearchInput items={item} />
         <div className="flex items-center gap-4">
           <CustomFilterByUser items={filterItems} />
-          <Link href="Admin/rooms/addRoom">
+          <Link href="Admin/rooms/">
             <Button
               color="blue2"
               radius="none"

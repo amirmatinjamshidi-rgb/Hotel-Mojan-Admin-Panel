@@ -1,11 +1,11 @@
 import React from "react";
 import CustomSearchInput from "@/features/components/SearchInput";
-import ReservationInfoTable from "@/features/Tables/ReservationTable";
 import UserStatics from "@/features/dashboard/userStatics";
 import ListPagination from "@/features/components/Listpagination";
 import CustomFilterByUser from "@/features/components/filterbyuser";
 import { Circle } from "lucide-react";
 import { Users } from "lucide-react";
+import TransactionListTable from "@/features/Tables/TransactionListTable";
 import { SquareActivity } from "lucide-react";
 import { UserPlus } from "lucide-react";
 const item = ["جستجو بر اساس نام کاربر"];
@@ -43,7 +43,8 @@ function page() {
         <CustomSearchInput items={item} />
         <CustomFilterByUser items={filterItems} />
       </div>
-      <ReservationInfoTable showButton={false} />
+
+      <TransactionListTable />
       <ListPagination />
     </main>
   );

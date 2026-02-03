@@ -5,7 +5,7 @@ import UserStatics from "@/features/dashboard/userStatics";
 import ListPagination from "@/features/components/Listpagination";
 import CustomFilterByUser from "@/features/components/filterbyuser";
 import { Circle, Plus } from "lucide-react";
-import Link from "next/link";
+// import Link from "next/link";
 
 import { CalendarDays } from "lucide-react";
 import { House } from "lucide-react";
@@ -44,17 +44,17 @@ function page() {
           />
           لیست رزروها
         </h1>
-        <Link href="Admin/rooms/addRoom">
-          <Button
-            color="blue2"
-            radius="none"
-            size="small"
-            className="text-white text-md p-2"
-          >
-            <Plus />
-            افزودن اتاق جدید
-          </Button>
-        </Link>
+        {/* <Link href="/rooms"> */}
+        <Button
+          color="blue2"
+          radius="none"
+          size="small"
+          className="text-white text-md p-2"
+        >
+          <Plus />
+          افزودن اتاق جدید
+        </Button>
+        {/* </Link> */}
       </div>
       <div className=" flex shrink-0 justify-between">
         <CustomSearchInput items={item} />

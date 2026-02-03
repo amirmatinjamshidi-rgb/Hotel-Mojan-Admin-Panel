@@ -1,7 +1,7 @@
 "use client";
 import { Divider } from "@mui/material";
 import { Clock } from "lucide-react";
-import Button from "./components/Button";
+import Button from "./Button";
 import { Circle } from "lucide-react";
 type TimeItem = { id: number; name: string; time: string };
 type RuleItem = {

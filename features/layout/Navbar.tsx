@@ -7,10 +7,10 @@ import { User, Menu, X } from "lucide-react";
 import BasicModal from "./BasicModal";
 
 const navItems = [
-  { href: "/", label: "خانه" },
-  { href: "/booking/", label: "اتاق ها" },
-  { href: "/Restaurant", label: "رستوران ما" },
-  { href: "/About-Us", label: "درباره ما" },
+  { href: "/Admin", label: "Dashboard" },
+  { href: "/Admin/messages", label: "پیام ها" },
+  { href: "/Admin/transactions", label: "پرداخت ها" },
+  { href: "/Admin/rooms", label: "اتاق ها" },
 ];
 
 function Navbar() {
@@ -23,7 +23,9 @@ function Navbar() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return <div className="h-16" />;
+  }
 
   return (
     <nav className=" top-0 sticky z-50 bg-white/40">
@@ -31,10 +33,10 @@ function Navbar() {
         <div className="flex items-center">
           <Image
             alt="logo"
-            src="/Logo.png"
-            width={80}
-            height={100}
-            className="object-contain"
+            src="/circularLogo.png"
+            width={50}
+            height={70}
+            fetchPriority="high"
           />
         </div>
 
@@ -68,8 +70,10 @@ function Navbar() {
           />
 
           <button
-            className="lg:hidden text-gray-700 p-2"
+            className="lg:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "بستن منوی ناوبری" : "باز کردن منوی ناوبری"}
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -83,7 +87,7 @@ function Navbar() {
               key={href}
               href={href}
               onClick={() => setIsOpen(false)}
-              className="text-gray-700 font-medium py-2 border-b border-gray-50 last:border-none"
+              className="text-gray-800 font-medium py-2 border-b border-gray-50 last:border-none"
             >
               {label}
             </Link>

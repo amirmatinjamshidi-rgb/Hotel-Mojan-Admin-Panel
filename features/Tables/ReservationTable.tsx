@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { Edit } from "lucide-react";
-import { Table, Column } from "./Tables";
+import { Column, Table } from "./Tables";
 
 type Passenger = {
   id: number;
