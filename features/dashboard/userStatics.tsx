@@ -1,36 +1,36 @@
 "use client";
 import React from "react";
 import { formatFaNumber } from "@/utils/formatFaNumber";
-type StaticDetail = {
-  id: number;
-  name: string;
-  icon: React.ReactNode;
-  number: number;
-};
+
 interface StaticDetailProps {
-  items: StaticDetail[];
+  items: { id: number; name: string; icon: React.ReactNode; number: number }[];
 }
+
 function UserStatics({ items }: StaticDetailProps) {
   return (
-    <div className="flex flex-row shrink-0 border allBorder rounded-md  align-middle items-center w-full mx-auto max-w-254 p-7 justify-between max-h-25 ">
-      {items.map((cat) => (
-        <div
-          key={cat.id}
-          className="flex flex-col justify-between items-center "
-        >
-          <span className="flex flex-row align-middle items-center gap-2">
-            <span className="text-secondary"> {cat.icon} </span>
-            <p className="text-textSecondary">{cat.name}</p>
-          </span>
+    <div className="w-full border allBorder rounded-md p-4 md:p-6 shadow-sm">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 divide-gray-100 xl:divide-x xl:divide-x-reverse">
+        {items.map((cat) => (
+          <div
+            key={cat.id}
+            className="flex flex-col items-center justify-center p-2"
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-secondary shrink-0 scale-75 md:scale-100">
+                {cat.icon}
+              </span>
+              <p className="text-textSecondary text-xs md:text-sm whitespace-nowrap">
+                {cat.name}
+              </p>
+            </div>
 
-          <h1 className="text-primary flex items-center text-xl font-semibold">
-            {" "}
-            {formatFaNumber(cat.number)}{" "}
-          </h1>
-        </div>
-      ))}
+            <div className="text-primary text-lg md:text-xl font-bold min-h-7">
+              {formatFaNumber(cat.number)}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
-
 export default UserStatics;

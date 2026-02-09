@@ -1,9 +1,13 @@
 "use client";
+import dynamic from "next/dynamic";
 
 import Box from "@mui/material/Box";
-import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
+export const Gauge = dynamic(
+  () => import("@mui/x-charts/Gauge").then((m) => m.Gauge),
+  { ssr: false },
+);
 import { formatFaNumber } from "@/utils/formatFaNumber";
-
+import { gaugeClasses } from "@mui/x-charts/Gauge";
 export default function OccupancyGauge() {
   const value = 80;
 
@@ -69,6 +73,7 @@ export default function OccupancyGauge() {
         </Box>
 
         <Gauge
+          skipAnimation
           value={value}
           min={0}
           max={100}

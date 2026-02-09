@@ -1,6 +1,9 @@
 "use client";
-
-import { LineChart } from "@mui/x-charts/LineChart";
+import dynamic from "next/dynamic";
+export const LineChart = dynamic(
+  () => import("@mui/x-charts/LineChart").then((m) => m.LineChart),
+  { ssr: false },
+);
 import Box from "@mui/material/Box";
 import { formatFaNumber } from "@/utils/formatFaNumber";
 
@@ -38,6 +41,7 @@ export default function OccupancyStatistics() {
       <p className="flex justify-start font-medium">درآمد ماهیانه</p>
 
       <LineChart
+        skipAnimation
         series={[
           {
             data: pData,

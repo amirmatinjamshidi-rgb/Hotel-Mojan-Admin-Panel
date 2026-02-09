@@ -1,9 +1,12 @@
 "use client";
 
-import { LineChart } from "@mui/x-charts/LineChart";
 import Box from "@mui/material/Box";
 import { formatFaNumber } from "@/utils/formatFaNumber";
-
+import dynamic from "next/dynamic";
+export const LineChart = dynamic(
+  () => import("@mui/x-charts/LineChart").then((m) => m.LineChart),
+  { ssr: false },
+);
 const pData: number[] = [40, 28, 85, 60, 100, 88];
 
 const xLabels: number[] = [2020, 2021, 2022, 2023, 2024, 2025];
@@ -25,6 +28,7 @@ export default function LineaChartYearly() {
       <p className="flex justify-start font-medium">درآمد سالیانه</p>
 
       <LineChart
+        skipAnimation
         series={[
           {
             data: pData,
@@ -64,7 +68,7 @@ export default function LineaChartYearly() {
         sx={{
           "& .MuiLineElement-root": {
             stroke: "#E9B872",
-            strokeWidth: 2,
+            // strokeWidth: 2,
             strokeDasharray: "5 3",
           },
           "& .MuiAreaElement-root": {

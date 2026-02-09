@@ -1,6 +1,9 @@
 "use client";
-
-import { BarChart } from "@mui/x-charts/BarChart";
+import dynamic from "next/dynamic";
+export const BarChart = dynamic(
+  () => import("@mui/x-charts/BarChart").then((m) => m.BarChart),
+  { ssr: false },
+);
 import Box from "@mui/material/Box";
 import { formatFaNumber } from "@/utils/formatFaNumber";
 
@@ -42,6 +45,7 @@ export default function Occupancystatistics() {
       {" "}
       <p className="flex align-middle">میزان اشغال هتل</p>
       <BarChart
+        skipAnimation
         series={[
           {
             data: pData,
